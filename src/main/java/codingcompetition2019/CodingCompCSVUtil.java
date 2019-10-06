@@ -5,8 +5,18 @@ import java.util.List;
 
 public class CodingCompCSVUtil {
 	public List<List<String>> readCSVFileByCountry(String fileName, String countryName) throws IOException {
-		// TODO implement this method
-		return null;
+		File file = new File(fileName);
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String line;
+		List<List<String>> interpretedFile = new List<>();
+		while((line = br.readLine()) != null){
+	        List<String> interpretedLine = Arrays.asList(line.split("\\s*,\\s*"));
+	        if (interpretedLine.get(0).equals(countryNAme)) {
+	        	interpretedFile.add(interpretedLine);
+	        }
+		}
+		return interpretedFile;
 	}
 	
 	public List<List<String>> readCSVFileWithHeaders(String fileName) throws IOException {
